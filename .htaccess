@@ -1,0 +1,43 @@
+# -------------------------------
+# 1. Authentication
+# -------------------------------
+AuthType Basic
+AuthName "Restricted Area"
+AuthUserFile "C:/wamp64/www/practical_exam/.htpasswd"
+Require valid-user
+
+# -------------------------------
+# 2. Cache Control
+# -------------------------------
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|xml|jpg|pdf)$">
+    Header set Cache-Control "max-age=604800, public"
+  </FilesMatch>
+</IfModule>
+
+# -------------------------------
+# 3. Compression (gzip/deflate)
+# -------------------------------
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/xml application/pdf text/plain
+</IfModule>
+
+# -------------------------------
+# 4. Content Negotiation
+# -------------------------------
+Options +MultiViews
+
+# -------------------------------
+# 5. Conditional Requests
+# -------------------------------
+FileETag MTime Size
+<IfModule mod_headers.c>
+  Header unset ETag
+</IfModule>
+
+# -------------------------------
+# 6. Range Requests
+# -------------------------------
+<IfModule mod_headers.c>
+  Header set Accept-Ranges "bytes"
+</IfModule>
