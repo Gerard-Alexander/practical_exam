@@ -11,7 +11,7 @@ Require valid-user
 # -------------------------------
 <IfModule mod_headers.c>
   <FilesMatch "\.(html|jpg|pdf|xml|json|js|css)$">
-    Header set Cache-Control "no-cache"
+    Header set Cache-Control "no-store"
   </FilesMatch>
 </IfModule>
 
