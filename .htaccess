@@ -11,7 +11,9 @@ Require valid-user
 # -------------------------------
 <IfModule mod_headers.c>
   <FilesMatch "\.(html|xml|jpg|pdf)$">
-    Header set Cache-Control "max-age=604800, public"
+    #Header set Cache-Control "no-store"
+    #Header set Cache-Control "no-cache"    
+    Header set Cache-Control "public, max-age=60"
   </FilesMatch>
 </IfModule>
 
