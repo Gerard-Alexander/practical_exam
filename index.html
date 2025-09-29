@@ -1,14 +1,67 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Demo Site - Home</title>
 </head>
+
 <body>
-  <h1>Welcome to My Demo Site</h1>
-  <p>This page will be used to demonstrate Apache configurations.</p>
+  <h1>Practical Exam :3</h1>
+  <p>Web Dev Practical Exam Demonstration</p>
   <p><a href="about.html">Go to About Page</a></p>
   <p><a href="image.jpg">View Image</a></p>
   <p><a href="document.pdf">Download PDF</a></p>
   <p><a href="data.xml">View XML Data</a></p>
+
+  <!--RANGE DEMONSTRATION -->
+  <h1>Range Request</h1>
+  <p>
+    Enter byte range (e.g., <code>10-99</code>):
+    <input type="text" id="byteRange" placeholder="start-end">
+    <button id="fetchBtn">Fetch Bytes from about.html</button>
+  </p>
+
+  <textarea style="width: 400px; height: 200px;" id="output" readonly placeholder="Fetched content will appear here"></textarea>
+
+  <script>
+    const fetchBtn = document.getElementById('fetchBtn');
+    const byteRangeInput = document.getElementById('byteRange');
+    const output = document.getElementById('output');
+
+    fetchBtn.addEventListener('click', async () => {
+      const rangeText = byteRangeInput.value.trim();
+      const match = rangeText.match(/^(\d+)-(\d+)$/);
+      if (!match) {
+        alert('Invalid format! Use start-end (numbers only)');
+        return;
+      }
+      const start = parseInt(match[1]);
+      const end = parseInt(match[2]);
+      if (end < start) {
+        alert('End must be greater than start');
+        return;
+      }
+
+      try {
+        const headers = { 'Range': `bytes=${start}-${end}` };
+        const resp = await fetch('about.html', { headers });
+
+        if (resp.status === 206 || resp.status === 200) {
+          const buffer = await resp.arrayBuffer();
+          // convert bytes to string
+          const text = new TextDecoder("utf-8").decode(buffer);
+          output.value = text;
+        } else {
+          output.value = `Error fetching: HTTP ${resp.status}`;
+        }
+      } catch (err) {
+        output.value = 'Fetch error: ' + err;
+      }
+    });
+  </script>
+  <!-- END OF RANGE DEMONSRATION -->
+
+
 </body>
+
 </html>
