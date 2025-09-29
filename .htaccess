@@ -27,7 +27,6 @@ Require valid-user
 # -------------------------------
 # 4. Content Negotiation
 # -------------------------------
-Options +MultiViews
 AddLanguage es .es
 AddLanguage fil .fil
 
