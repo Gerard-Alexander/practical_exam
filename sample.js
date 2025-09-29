@@ -1,33 +1,3 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title>Demo Site - Home</title>
-</head>
-
-<body>
-  <h1>Practical Exam :3</h1>
-  <p>Web Dev Practical Exam Demonstration</p>
-  <p><a href="about.html">Go to About Page</a></p>
-  <p><a href="image.jpg">View Image</a></p>
-  <p><a href="document.pdf">Download PDF</a></p>
-  <p><a href="data.xml">View XML Data</a></p>
-  <p><a href="cool.json">View JSON File</a></p>
-  <p><a href="sample.js">View JS File</a></p>
-  <p><a href="sample.css">View CSS File</a></p>
-
-
-  <!--RANGE DEMONSTRATION -->
-  <h1>Range Request</h1>
-  <p>
-    Enter byte range (e.g., <code>10-99</code>):
-    <input type="text" id="byteRange" placeholder="start-end">
-    <button id="fetchBtn">Fetch Bytes from about.html</button>
-  </p>
-
-  <textarea style="width: 400px; height: 200px;" id="output" readonly placeholder="Fetched content will appear here"></textarea>
-
-  <script>
     const fetchBtn = document.getElementById('fetchBtn');
     const byteRangeInput = document.getElementById('byteRange');
     const output = document.getElementById('output');
@@ -62,10 +32,3 @@
         output.value = 'Fetch error: ' + err;
       }
     });
-  </script>
-  <!-- END OF RANGE DEMONSRATION -->
-
-
-</body>
-
-</html>

@@ -10,12 +10,28 @@ Require valid-user
 # 2. Cache Control
 # -------------------------------
 <IfModule mod_headers.c>
-  <FilesMatch "\.(html|xml|jpg|pdf)$">
-    #Header set Cache-Control "no-store"
-    #Header set Cache-Control "no-cache"    
-    Header set Cache-Control "public, max-age=60"
+  <FilesMatch "\.(html|jpg|pdf|xml|json|js|css)$">
+    Header set Cache-Control "no-store"
   </FilesMatch>
 </IfModule>
+
+#<IfModule mod_headers.c>
+#  <FilesMatch "\.(html|xml|json)$">
+#    Header set Cache-Control "no-store"
+#  </FilesMatch>
+#</IfModule>
+
+#<IfModule mod_headers.c>
+#  <FilesMatch "\.(html|xml|json)$">
+#    Header set Cache-Control "no-cache, must-revalidate"
+#  </FilesMatch>
+#</IfModule>
+
+#<IfModule mod_headers.c>
+#  <FilesMatch "\.(jpg|pdf|css|js)$">
+#    Header set Cache-Control "public, max-age=60, must-revalidate"
+#  </FilesMatch>
+#</IfModule>
 
 # -------------------------------
 # 3. Compression (gzip/deflate)
